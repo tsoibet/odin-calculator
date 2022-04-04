@@ -35,3 +35,31 @@ function operate(operator, a, b) {
 function showErrMsg() {
     return "ERROR";
 }
+
+const displayPanel = document.querySelector("#displayPanel");
+
+function displayInput(input) {
+    if (displayPanel.textContent == 0) {
+        displayPanel.textContent = input;
+    } else if (displayPanel.textContent.length === 12) {
+        return;
+    } else {
+        displayPanel.textContent += input;
+    }
+    displayValue = displayPanel.textContent;
+}
+
+const numBtns = document.querySelectorAll(".numBtn");
+numBtns.forEach( numBtn => { 
+    numBtn.addEventListener("click", () => {
+        displayInput(numBtn.textContent);
+    });
+});
+
+function clear() {
+    displayPanel.textContent = 0;
+    displayValue = displayPanel.textContent;
+}
+
+const clearBtn = document.querySelector("#clearBtn");
+clearBtn.addEventListener("click", clear);
