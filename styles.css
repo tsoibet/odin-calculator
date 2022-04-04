@@ -1,0 +1,47 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 24px;
+}
+
+#container, #numPanel, #operatorPanel, .buttonPanelRow {
+    gap: 8px;
+}
+
+#container {
+    width: 200px;
+    margin: 50px auto;
+    display: flex;
+    flex-direction: column;
+}
+
+#displayPanel {
+    border: 1px solid black;
+    padding: 10px;
+}
+
+#buttonPanel {
+    display: flex;
+    justify-content: space-between;
+}
+
+#numPanel {
+    display: flex;
+    flex-direction: column;
+}
+
+.buttonPanelRow {
+    display: flex;
+    justify-content: space-between;
+}
+
+#operatorPanel {
+    display: flex;
+    flex-direction: column;
+}
+
+button {
+    padding: 10px;
+}
