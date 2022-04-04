@@ -1,5 +1,5 @@
 function add(a, b) {
-    return a + b;
+    return +a + +b;
 }
 
 function subtract(a, b) {
@@ -37,8 +37,17 @@ function showErrMsg() {
 }
 
 const displayPanel = document.querySelector("#displayPanel");
+let displayValue = displayPanel.textContent;
+let operatorClicked = "";
+let storedValue = 0;
+let firstNumBtn = true;
 
 function displayInput(input) {
+    if (operatorClicked && firstNumBtn) {
+        displayPanel.textContent = 0;
+        displayValue = displayPanel.textContent;
+        firstNumBtn = false;
+    }
     if (displayPanel.textContent == 0) {
         displayPanel.textContent = input;
     } else if (displayPanel.textContent.length === 12) {
@@ -56,9 +65,36 @@ numBtns.forEach( numBtn => {
     });
 });
 
+const operatorBtns = document.querySelectorAll(".operatorBtn");
+operatorBtns.forEach( operatorBtn => { 
+    operatorBtn.addEventListener("click", () => {
+        clickOperator(operatorBtn.textContent, displayValue);
+    });
+});
+
+function clickOperator(operator, a) {
+    operatorClicked = operator;
+    storedValue = a;
+    firstNumBtn = true;
+}
+
+const equalBtn = document.querySelector("#equalBtn");
+equalBtn.addEventListener("click", () => {
+    displayResult(operate(operatorClicked, storedValue, displayValue));
+    operatorClicked = "";
+    storedValue = 0;
+});
+
+function displayResult(result) {
+    displayPanel.textContent = result;
+    displayValue = result;
+}
+
 function clear() {
     displayPanel.textContent = 0;
     displayValue = displayPanel.textContent;
+    operatorClicked = "";
+    storedValue = 0;
 }
 
 const clearBtn = document.querySelector("#clearBtn");
