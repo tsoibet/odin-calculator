@@ -12,12 +12,15 @@ function multiply(a, b) {
 
 function divide(a, b) {
     if (b == 0) {
-        return showErrMsg();
+        return "∞ INFINITY ∞";
     }
     return Math.round(a / b * 1000) / 1000;
 }
 
 function operate(operator, a, b) {
+    if (isNaN(a) || isNaN(b)) {
+        return showErrMsg();
+    }
     switch (operator) {
         case "+":
             return add(a, b);
@@ -80,6 +83,7 @@ function clickOperator(operator, a) {
 
 const equalBtn = document.querySelector("#equalBtn");
 equalBtn.addEventListener("click", () => {
+    if (!operatorClicked) return;
     displayResult(operate(operatorClicked, storedValue, displayValue));
     operatorClicked = "";
     storedValue = 0;
@@ -93,8 +97,7 @@ function displayResult(result) {
 function clear() {
     displayPanel.textContent = 0;
     displayValue = displayPanel.textContent;
-    operatorClicked = "";
-    storedValue = 0;
+
 }
 
 const clearBtn = document.querySelector("#clearBtn");
