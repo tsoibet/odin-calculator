@@ -70,6 +70,7 @@ function subtract(a, b) {
 }
 
 function multiply(a, b) {
+
     return a * b;
 }
 
@@ -77,7 +78,7 @@ function divide(a, b) {
     if (b == 0) {
         return infMsg;
     }
-    return Math.round(a / b * 1000) / 1000;
+    return a / b;
 }
 
 function operate(operator, a, b) {
@@ -103,6 +104,11 @@ function showErrMsg() {
 }
 
 function displayResult(result) {
+    if (result.toString().length > 12) {
+        result = errMsg;
+    } else {
+        result = Math.round(result * 100) / 100;
+    }
     displayPanel.textContent = result;
     displayValue = result;
 }
