@@ -1,7 +1,7 @@
 const displayPanel = document.querySelector("#displayPanel");
 let displayValue = displayPanel.textContent;
 let operatorClicked = "";
-let storedValue = 0;
+let storedValue = "";
 let isFirstNumBtn = true;
 let errMsg = "ERROR";
 let infMsg = "∞ INFINITY ∞";
@@ -40,9 +40,17 @@ operatorBtns.forEach( operatorBtn => {
 });
 
 function clickOperator(operator, a) {
-    operatorClicked = operator;
-    storedValue = a;
-    isFirstNumBtn = true;
+    if (operatorClicked && storedValue) {
+        displayResult(operate(operatorClicked, storedValue, displayValue));
+        operatorClicked = operator;
+        storedValue = displayValue;
+        isFirstNumBtn = true;
+    }
+    else {
+        operatorClicked = operator;
+        storedValue = a;
+        isFirstNumBtn = true;
+    }
 }
 
 const equalBtn = document.querySelector("#equalBtn");
@@ -50,7 +58,7 @@ equalBtn.addEventListener("click", () => {
     if (!operatorClicked) return;
     displayResult(operate(operatorClicked, storedValue, displayValue));
     operatorClicked = "";
-    storedValue = 0;
+    storedValue = "";
 });
 
 function add(a, b) {
@@ -106,5 +114,5 @@ function clear() {
     displayPanel.textContent = 0;
     displayValue = displayPanel.textContent;
     operatorClicked = "";
-    storedValue = 0;
+    storedValue = "";
 }
