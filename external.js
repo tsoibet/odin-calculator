@@ -1,3 +1,53 @@
+const displayPanel = document.querySelector("#displayPanel");
+let displayValue = displayPanel.textContent;
+let operatorClicked = "";
+let storedValue = 0;
+let isFirstNumBtn = true;
+
+const numBtns = document.querySelectorAll(".numBtn");
+numBtns.forEach( numBtn => { 
+    numBtn.addEventListener("click", () => {
+        displayInput(numBtn.textContent);
+    });
+});
+
+function displayInput(input) {
+    if (operatorClicked && isFirstNumBtn) {
+        displayPanel.textContent = 0;
+        displayValue = displayPanel.textContent;
+        isFirstNumBtn = false;
+    }
+    if (displayPanel.textContent == 0) {
+        displayPanel.textContent = input;
+    } else if (displayPanel.textContent.length === 12) {
+        return;
+    } else {
+        displayPanel.textContent += input;
+    }
+    displayValue = displayPanel.textContent;
+}
+
+const operatorBtns = document.querySelectorAll(".operatorBtn");
+operatorBtns.forEach( operatorBtn => { 
+    operatorBtn.addEventListener("click", () => {
+        clickOperator(operatorBtn.textContent, displayValue);
+    });
+});
+
+function clickOperator(operator, a) {
+    operatorClicked = operator;
+    storedValue = a;
+    isFirstNumBtn = true;
+}
+
+const equalBtn = document.querySelector("#equalBtn");
+equalBtn.addEventListener("click", () => {
+    if (!operatorClicked) return;
+    displayResult(operate(operatorClicked, storedValue, displayValue));
+    operatorClicked = "";
+    storedValue = 0;
+});
+
 function add(a, b) {
     return +a + +b;
 }
@@ -39,60 +89,13 @@ function showErrMsg() {
     return "ERROR";
 }
 
-const displayPanel = document.querySelector("#displayPanel");
-let displayValue = displayPanel.textContent;
-let operatorClicked = "";
-let storedValue = 0;
-let firstNumBtn = true;
-
-function displayInput(input) {
-    if (operatorClicked && firstNumBtn) {
-        displayPanel.textContent = 0;
-        displayValue = displayPanel.textContent;
-        firstNumBtn = false;
-    }
-    if (displayPanel.textContent == 0) {
-        displayPanel.textContent = input;
-    } else if (displayPanel.textContent.length === 12) {
-        return;
-    } else {
-        displayPanel.textContent += input;
-    }
-    displayValue = displayPanel.textContent;
-}
-
-const numBtns = document.querySelectorAll(".numBtn");
-numBtns.forEach( numBtn => { 
-    numBtn.addEventListener("click", () => {
-        displayInput(numBtn.textContent);
-    });
-});
-
-const operatorBtns = document.querySelectorAll(".operatorBtn");
-operatorBtns.forEach( operatorBtn => { 
-    operatorBtn.addEventListener("click", () => {
-        clickOperator(operatorBtn.textContent, displayValue);
-    });
-});
-
-function clickOperator(operator, a) {
-    operatorClicked = operator;
-    storedValue = a;
-    firstNumBtn = true;
-}
-
-const equalBtn = document.querySelector("#equalBtn");
-equalBtn.addEventListener("click", () => {
-    if (!operatorClicked) return;
-    displayResult(operate(operatorClicked, storedValue, displayValue));
-    operatorClicked = "";
-    storedValue = 0;
-});
-
 function displayResult(result) {
     displayPanel.textContent = result;
     displayValue = result;
 }
+
+const clearBtn = document.querySelector("#clearBtn");
+clearBtn.addEventListener("click", clear);
 
 function clear() {
     displayPanel.textContent = 0;
@@ -100,6 +103,3 @@ function clear() {
     operatorClicked = "";
     storedValue = 0;
 }
-
-const clearBtn = document.querySelector("#clearBtn");
-clearBtn.addEventListener("click", clear);
