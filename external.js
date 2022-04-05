@@ -3,6 +3,8 @@ let displayValue = displayPanel.textContent;
 let operatorClicked = "";
 let storedValue = 0;
 let isFirstNumBtn = true;
+let errMsg = "ERROR";
+let infMsg = "∞ INFINITY ∞";
 
 const numBtns = document.querySelectorAll(".numBtn");
 numBtns.forEach( numBtn => { 
@@ -12,6 +14,9 @@ numBtns.forEach( numBtn => {
 });
 
 function displayInput(input) {
+    if (displayPanel.textContent === errMsg || displayPanel.textContent === infMsg) {
+        return;
+    }
     if (operatorClicked && isFirstNumBtn) {
         displayPanel.textContent = 0;
         displayValue = displayPanel.textContent;
@@ -62,7 +67,7 @@ function multiply(a, b) {
 
 function divide(a, b) {
     if (b == 0) {
-        return "∞ INFINITY ∞";
+        return infMsg;
     }
     return Math.round(a / b * 1000) / 1000;
 }
@@ -86,7 +91,7 @@ function operate(operator, a, b) {
 }
 
 function showErrMsg() {
-    return "ERROR";
+    return errMsg;
 }
 
 function displayResult(result) {
