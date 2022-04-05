@@ -97,7 +97,8 @@ function displayResult(result) {
 function clear() {
     displayPanel.textContent = 0;
     displayValue = displayPanel.textContent;
-
+    operatorClicked = "";
+    storedValue = 0;
 }
 
 const clearBtn = document.querySelector("#clearBtn");
