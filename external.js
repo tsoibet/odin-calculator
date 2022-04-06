@@ -115,6 +115,12 @@ function showErrMsg() {
 }
 
 function displayResult(result) {
+    if (result === errMsg || result === infMsg)
+    {
+        displayPanel.textContent = result;
+        displayValue = result;
+        return;
+    }
     if (result.toString().length > 12) {
         result = errMsg;
     } else {
