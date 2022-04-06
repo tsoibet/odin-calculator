@@ -2,6 +2,7 @@ const displayPanel = document.querySelector("#displayPanel");
 let displayValue = displayPanel.textContent;
 let operatorClicked = "";
 let storedValue = "";
+let isDotClicked = false;
 let isFirstNumBtn = true;
 let errMsg = "ERROR";
 let infMsg = "∞ INFINITY ∞";
@@ -17,12 +18,17 @@ function displayInput(input) {
     if (displayPanel.textContent === errMsg || displayPanel.textContent === infMsg) {
         return;
     }
+    if (isDotClicked && input === ".") {
+        return;
+    }
     if (operatorClicked && isFirstNumBtn) {
-        displayPanel.textContent = 0;
-        displayValue = displayPanel.textContent;
+        if (input !== ".") {
+            displayPanel.textContent = 0;
+            displayValue = displayPanel.textContent;
+        }
         isFirstNumBtn = false;
     }
-    if (displayPanel.textContent == 0) {
+    if (displayPanel.textContent === "0" && input !== ".") {
         displayPanel.textContent = input;
     } else if (displayPanel.textContent.length === 12) {
         return;
@@ -30,6 +36,11 @@ function displayInput(input) {
         displayPanel.textContent += input;
     }
     displayValue = displayPanel.textContent;
+    if (displayPanel.textContent.includes(".")) {
+        isDotClicked = true;
+    } else {
+        isDotClicked = false;
+    }
 }
 
 const operatorBtns = document.querySelectorAll(".operatorBtn");
@@ -111,6 +122,11 @@ function displayResult(result) {
     }
     displayPanel.textContent = result;
     displayValue = result;
+    if (displayPanel.textContent.includes(".")) {
+        isDotClicked = true;
+    } else {
+        isDotClicked = false;
+    }
 }
 
 const clearBtn = document.querySelector("#clearBtn");
@@ -121,4 +137,5 @@ function clear() {
     displayValue = displayPanel.textContent;
     operatorClicked = "";
     storedValue = "";
+    isDotClicked = false;
 }
