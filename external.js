@@ -121,10 +121,11 @@ function displayResult(result) {
         displayValue = result;
         return;
     }
+    result = result.toFixed(2);
     if (result.toString().length > 12) {
         result = errMsg;
-    } else {
-        result = Math.round(result * 100) / 100;
+    } else if (Number.isInteger(+result)) {
+        result = parseInt(result);
     }
     displayPanel.textContent = result;
     displayValue = result;
