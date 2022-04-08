@@ -66,7 +66,7 @@ function displayInput(input) {
         }
         if (displayPanel.textContent === "0" && input !== ".") {
             displayPanel.textContent = input;
-        } else if (displayPanel.textContent.length === 12) {
+        } else if (displayPanel.textContent.length === 10) {
             return;
         } else {
             displayPanel.textContent += input;
@@ -163,10 +163,11 @@ function displayResult(result) {
         return;
     }
     result = result.toFixed(2);
-    if (result.toString().length > 12) {
-        result = errMsg;
-    } else if (Number.isInteger(+result)) {
+    if (Number.isInteger(+result)) {
         result = parseInt(result);
+    }
+    if (result.toString().length > 10) {
+        result = errMsg;
     }
     displayPanel.textContent = result;
     displayValue = result;
