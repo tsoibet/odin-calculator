@@ -188,3 +188,6 @@ function clear() {
     storedValue = "";
     isDotClicked = false;
 }
+
+const allBtns = document.querySelectorAll("button");
+allBtns.forEach(btn => btn.tabIndex = "-1");
