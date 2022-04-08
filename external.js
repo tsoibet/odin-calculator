@@ -49,10 +49,8 @@ function displayInput(input) {
         return;
     }
     if (operatorClicked && isFirstNumBtn) {
-        if (input !== ".") {
-            displayPanel.textContent = 0;
-            displayValue = displayPanel.textContent;
-        }
+        displayPanel.textContent = 0;
+        displayValue = displayPanel.textContent;
         isFirstNumBtn = false;
     }
     if (displayPanel.textContent === "0" && input !== ".") {
