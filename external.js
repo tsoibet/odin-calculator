@@ -7,6 +7,33 @@ let isFirstNumBtn = true;
 let errMsg = "ERROR";
 let infMsg = "∞ INFINITY ∞";
 
+window.addEventListener("keydown", (event) => {
+    if (!isNaN(Number(event.key))) {
+        displayInput(event.key);
+    } else {
+        switch (event.key) {
+            case ".":
+                displayInput(event.key);
+                break;
+            case "+":
+            case "-":
+            case "*":
+            case "/":
+                clickOperator(event.key, displayValue);
+                break;
+            case "Enter":
+                clickEqual();
+                break;
+            case "Clear":
+            case "Escape":
+                clear();
+                break;
+            default:
+                return;
+        }
+    }
+});
+
 const numBtns = document.querySelectorAll(".numBtn");
 numBtns.forEach( numBtn => { 
     numBtn.addEventListener("click", () => {
@@ -65,12 +92,14 @@ function clickOperator(operator, a) {
 }
 
 const equalBtn = document.querySelector("#equalBtn");
-equalBtn.addEventListener("click", () => {
+equalBtn.addEventListener("click", clickEqual);
+
+function clickEqual() {
     if (!operatorClicked) return;
     displayResult(operate(operatorClicked, storedValue, displayValue));
     operatorClicked = "";
     storedValue = "";
-});
+}
 
 function add(a, b) {
     return +a + +b;
