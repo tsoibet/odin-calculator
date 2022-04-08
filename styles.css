@@ -22,6 +22,7 @@
 }
 
 #displayPanel {
+    height: 52px;
     overflow: hidden;
     text-align: right;
     line-height: 52px;
