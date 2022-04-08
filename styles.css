@@ -6,22 +6,30 @@
     font-size: 24px;
 }
 
-#container, #numPanel, #operatorPanel, .buttonPanelRow {
+#numPanel, #operatorPanel, .buttonPanelRow {
     gap: 8px;
 }
 
 #container {
-    width: 200px;
-    margin: 50px auto;
+    margin: 0 auto;
+    width: 258px;
+    border: 1px solid darkgray;
+    background-color: black;
+    padding: 15px;
     display: flex;
     flex-direction: column;
+    gap: 15px;
 }
 
 #displayPanel {
-    height: 48px;
+    /*align text bottom*/
+    height: 52px;
     overflow: hidden;
     text-align: right;
-    border: 1px solid black;
+    background-color: lightgray;
+    color: black;
+    text-shadow: 1px 1px 1px white;
+    font-size: 32px;
     padding: 10px;
 }
 
@@ -46,5 +54,29 @@
 }
 
 button {
+    width: 50px;
+    height: 50px;
+    border: none;
+    border-radius: 50px;
     padding: 10px;
+}
+
+.numBtn {
+    background-color: #646464;
+    color: white;
+}
+
+#operatorPanel button {
+    background-color: orange;
+    color: white;
+}
+
+#clearBtn, #backspaceBtn {
+    background-color: lightgray;
+    color: black;
+}
+
+header, footer {
+    text-align: center;
+    padding: 36px;
 }
