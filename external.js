@@ -28,6 +28,9 @@ window.addEventListener("keydown", (event) => {
             case "Escape":
                 clear();
                 break;
+            case "Backspace":
+                displayInput("<");
+                break;
             default:
                 return;
         }
@@ -45,22 +48,33 @@ function displayInput(input) {
     if (displayPanel.textContent === errMsg || displayPanel.textContent === infMsg) {
         return;
     }
-    if (isDotClicked && input === ".") {
-        return;
-    }
-    if (operatorClicked && isFirstNumBtn) {
-        displayPanel.textContent = 0;
-        displayValue = displayPanel.textContent;
-        isFirstNumBtn = false;
-    }
-    if (displayPanel.textContent === "0" && input !== ".") {
-        displayPanel.textContent = input;
-    } else if (displayPanel.textContent.length === 12) {
-        return;
+
+    if (input === "<") {
+        if (displayPanel.textContent === "0") {
+            return;
+        } else {
+            displayPanel.textContent = displayPanel.textContent.slice(0,-1);
+        }
     } else {
-        displayPanel.textContent += input;
+        if (isDotClicked && input === ".") {
+            return;
+        }
+        if (operatorClicked && isFirstNumBtn) {
+            displayPanel.textContent = 0;
+            displayValue = displayPanel.textContent;
+            isFirstNumBtn = false;
+        }
+        if (displayPanel.textContent === "0" && input !== ".") {
+            displayPanel.textContent = input;
+        } else if (displayPanel.textContent.length === 12) {
+            return;
+        } else {
+            displayPanel.textContent += input;
+        }
     }
+
     displayValue = displayPanel.textContent;
+
     if (displayPanel.textContent.includes(".")) {
         isDotClicked = true;
     } else {

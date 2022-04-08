@@ -18,6 +18,7 @@
 }
 
 #displayPanel {
+    height: 48px;
     overflow: hidden;
     text-align: right;
     border: 1px solid black;
