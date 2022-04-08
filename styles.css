@@ -22,15 +22,13 @@
 }
 
 #displayPanel {
-    /*align text bottom*/
-    height: 52px;
     overflow: hidden;
     text-align: right;
+    line-height: 52px;
     background-color: lightgray;
     color: black;
-    text-shadow: 1px 1px 1px white;
     font-size: 32px;
-    padding: 10px;
+    padding: 0 10px;
 }
 
 #buttonPanel {
@@ -58,7 +56,8 @@ button {
     height: 50px;
     border: none;
     border-radius: 50px;
-    padding: 10px;
+    line-height: 50px;
+    text-align: center;
 }
 
 .numBtn {
