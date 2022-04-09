@@ -51,10 +51,9 @@ function displayInput(input) {
     }
 
     if (input === "<") {
-        if (displayPanel.textContent === "0") {
-            return;
-        } else {
-            displayPanel.textContent = displayPanel.textContent.slice(0,-1);
+        displayPanel.textContent = displayPanel.textContent.slice(0,-1);
+        if (displayPanel.textContent === "") {
+            displayPanel.textContent = 0;
         }
     } else {
         if (isDotClicked && input === ".") {
