@@ -6,8 +6,11 @@
     font-size: 24px;
 }
 
-#numPanel, #operatorPanel, .buttonPanelRow {
-    gap: 8px;
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
 }
 
 #container {
@@ -40,6 +43,10 @@
 #numPanel {
     display: flex;
     flex-direction: column;
+}
+
+#numPanel, #operatorPanel, .buttonPanelRow {
+    gap: 8px;
 }
 
 .buttonPanelRow {
@@ -79,6 +86,10 @@ button {
 header, footer {
     text-align: center;
     padding: 26px;
+}
+
+h3 {
+    font-size: 24px;
 }
 
 small {
