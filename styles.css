@@ -6,13 +6,6 @@
     font-size: 24px;
 }
 
-body {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 100vh;
-}
-
 #container {
     margin: 0 auto;
     width: 258px;
