@@ -5,7 +5,7 @@ let storedValue = "";
 let isDotClicked = false;
 let isFirstNumBtn = true;
 let errMsg = "ERROR";
-let infMsg = "∞ INFINITY ∞";
+let infMsg = "INFINITY";
 
 window.addEventListener("keydown", (event) => {
     if (!isNaN(Number(event.key))) {
