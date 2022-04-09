@@ -66,13 +66,43 @@ button {
     color: white;
 }
 
+.numBtn:hover {
+    background-color: gray;
+    color: white;
+}
+
+.numBtn.pressed {
+    background-color: gray;
+    color: white;
+}
+
 #operatorPanel button {
     background-color: orange;
     color: white;
 }
 
+#operatorPanel button:hover {
+    background-color: white;
+    color: orange;
+}
+
+#operatorPanel .pressed {
+    background-color: white;
+    color: orange;
+}
+
 #clearBtn, #backspaceBtn {
     background-color: lightgray;
+    color: black;
+}
+
+#clearBtn:hover , #backspaceBtn:hover {
+    background-color: #e7e7e7;
+    color: black;
+}
+
+#clearBtn.pressed, #backspaceBtn.pressed {
+    background-color: #e7e7e7;
     color: black;
 }
 

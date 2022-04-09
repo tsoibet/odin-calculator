@@ -191,3 +191,75 @@ function clear() {
 
 const allBtns = document.querySelectorAll("button");
 allBtns.forEach(btn => btn.tabIndex = "-1");
+
+window.addEventListener("keydown", function(event) {
+    if (!isNaN(Number(event.key))) {
+        document.querySelector(`#numBtn-${event.key}`).classList.add("pressed");
+    } else {
+        switch (event.key) {
+            case ".":
+                document.querySelector("#numBtn-dot").classList.add("pressed");
+                break;
+            case "+":
+                document.querySelector("#operatorAdd").classList.add("pressed");
+                break;
+            case "-":
+                document.querySelector("#operatorSubtract").classList.add("pressed");
+                break;
+            case "*":
+                document.querySelector("#operatorMultiply").classList.add("pressed");
+                break;
+            case "/":
+                document.querySelector("#operatorDivide").classList.add("pressed");
+                break;
+            case "Enter":
+                document.querySelector("#equalBtn").classList.add("pressed");
+                break;
+            case "Clear":
+            case "Escape":
+                document.querySelector("#clearBtn").classList.add("pressed");
+                break;
+            case "Backspace":
+                document.querySelector("#backspaceBtn").classList.add("pressed");
+                break;
+            default:
+                return;
+        }
+    }
+});
+
+window.addEventListener("keyup", (event) => {
+    if (!isNaN(Number(event.key))) {
+        document.querySelector(`#numBtn-${event.key}`).classList.remove("pressed");
+    } else {
+        switch (event.key) {
+            case ".":
+                document.querySelector("#numBtn-dot").classList.remove("pressed");
+                break;
+            case "+":
+                document.querySelector("#operatorAdd").classList.remove("pressed");
+                break;
+            case "-":
+                document.querySelector("#operatorSubtract").classList.remove("pressed");
+                break;
+            case "*":
+                document.querySelector("#operatorMultiply").classList.remove("pressed");
+                break;
+            case "/":
+                document.querySelector("#operatorDivide").classList.remove("pressed");
+                break;
+            case "Enter":
+                document.querySelector("#equalBtn").classList.remove("pressed");
+                break;
+            case "Clear":
+            case "Escape":
+                document.querySelector("#clearBtn").classList.remove("pressed");
+                break;
+            case "Backspace":
+                document.querySelector("#backspaceBtn").classList.remove("pressed");
+                break;
+            default:
+                return;
+        }
+    }
+});
