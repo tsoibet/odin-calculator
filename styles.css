@@ -77,7 +77,10 @@ button {
 }
 
 header, footer {
-    font-size: 16px;
     text-align: center;
-    padding: 36px;
+    padding: 26px;
+}
+
+small {
+    font-size: 14px;
 }
