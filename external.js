@@ -22,6 +22,7 @@ window.addEventListener("keydown", (event) => {
                 clickOperator(event.key, displayValue);
                 break;
             case "Enter":
+            case "=":
                 clickEqual();
                 break;
             case "Clear":
@@ -212,6 +213,7 @@ window.addEventListener("keydown", function(event) {
             case "/":
                 document.querySelector("#operatorDivide").classList.add("pressed");
                 break;
+            case "=":
             case "Enter":
                 document.querySelector("#equalBtn").classList.add("pressed");
                 break;
@@ -248,6 +250,7 @@ window.addEventListener("keyup", (event) => {
             case "/":
                 document.querySelector("#operatorDivide").classList.remove("pressed");
                 break;
+            case "=":
             case "Enter":
                 document.querySelector("#equalBtn").classList.remove("pressed");
                 break;
